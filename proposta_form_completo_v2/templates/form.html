@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gerar Proposta (.docx)</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Gerar Proposta (.docx)</h1>
+
+    <form method="post" action="/gerar" enctype="multipart/form-data">
+      <fieldset>
+        <legend>Dados do Cliente</legend>
+        <label>ID HubSpot
+          <input type="text" name="ID_HUBSPOT">
+        </label>
+        <label>Nome do Cliente
+          <input type="text" name="NOME_CLIENTE" required>
+        </label>
+        <label>CNPJ do Cliente
+          <input type="text" name="CNPJ_CLIENTE" placeholder="00.000.000/0000-00" required>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Detalhes do Documento</legend>
+        <label>Nome do Autor
+          <input type="text" name="NOME_AUTOR">
+        </label>
+        <label>Número da Revisão
+          <input type="text" name="NUMERO_REVISAO">
+        </label>
+        <label>Data de Emissão
+          <input type="text" name="DATA_EMISSAO" placeholder="DD/MM/AAAA">
+        </label>
+        <label>Data de Validade
+          <input type="text" name="DATA_VALIDADE" placeholder="DD/MM/AAAA">
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Executivo Responsável</legend>
+        <label>Nome do Executivo
+          <input type="text" name="NOME_EXECUTIVO">
+        </label>
+        <label>Email do Executivo
+          <input type="email" name="EMAIL_EXECUTIVO">
+        </label>
+        <label>Telefone do Executivo
+          <input type="text" name="TELEFONE_EXECUTIVO">
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Valores</legend>
+        <label>Quantidade de hora
+          <input type="number" min="0" step="1" name="QTD_HORA">
+        </label>
+        <label>Valor hora
+          <input type="text" name="VALOR_HORA" placeholder="Ex.: 185,00">
+        </label>
+        <label>Valor hora excedente
+          <input type="text" name="VALOR_HORA_EXCEDENTE" placeholder="Ex.: 220,00">
+        </label>
+        <label>Valor total
+          <input type="text" name="VALOR_TOTAL" placeholder="Ex.: 7.400,00">
+        </label>
+      </fieldset>
+
+       <fieldset>
+        <legend>Logo do Cliente</legend>
+        <label>Logo (imagem)
+          <input type="file" name="logo" accept="image/*">
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Template (.docx)</legend>
+        <label>Enviar template (.docx)
+          <input type="file" name="template_file" accept=".docx">
+        </label>
+      </fieldset>
+
+      <button type="submit">Gerar .docx</button>
+    </form>
+
+    <p class="hint">Diagnóstico rápido: <a href="/debug/scan" target="_blank">/debug/scan</a></p>
+  </div>
+</body>
+</html>
